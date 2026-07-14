@@ -1,0 +1,90 @@
+$Host.UI.RawUI.WindowTitle = "Активация Windows / MS Office"
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
+function Show-MainMenu {
+    Clear-Host
+    Write-Host "==========================================" -ForegroundColor Cyan
+    Write-Host "       Выберите что вам нужно активировать" -ForegroundColor Cyan
+    Write-Host "==========================================" -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host "1 - Windows (Автоматически)" -ForegroundColor Yellow
+    Write-Host "2 - MS Office" -ForegroundColor Yellow
+    Write-Host "3 - Windows (Выбор редакции вручную)" -ForegroundColor Yellow
+    Write-Host ""
+
+    $choice1 = Read-Host "Введите номер (1-3)"
+
+    switch ($choice1) {
+        "1" { Activate-Windows "W269N-WFGWX-YVC9B-4J6C9-T83GX" }
+        "2" { Activate-Office }
+        "3" { Show-EditionsMenu }
+        default {
+            Write-Host "Неверный выбор. Перезапустите скрипт." -ForegroundColor Red
+            Read-Host "Нажмите Enter для выхода..."
+        }
+    }
+}
+
+function Activate-Windows ($key) {
+    Clear-Host
+    Write-Host "Установка ключа..." -ForegroundColor Green
+    cscript //nologo C:\Windows\System32\slmgr.vbs /ipk $key
+
+    Write-Host "Настройка KMS-сервера..." -ForegroundColor Green
+    cscript //nologo C:\Windows\System32\slmgr.vbs /skms kms.digiboy.ir
+
+    Write-Host "Активация..." -ForegroundColor Green
+    cscript //nologo C:\Windows\System32\slmgr.vbs /ato
+
+    Write-Host ""
+    Write-Host "В одном из всплывающих окон будет написано об успехе или ошибке." -ForegroundColor Yellow
+    Read-Host "Нажмите Enter чтобы продолжить..."
+}
+
+function Activate-Office {
+    Clear-Host
+    Write-Host "Запуск скрипта активации Office..." -ForegroundColor Green
+    Write-Host "В появившемся меню нажмите 2." -ForegroundColor Yellow
+    Start-Sleep -Seconds 2
+    
+    irm https://get.activated.win | iex
+}
+
+function Show-EditionsMenu {
+    Clear-Host
+    Write-Host "==========================================" -ForegroundColor Cyan
+    Write-Host "       Выбор редакции для активации" -ForegroundColor Cyan
+    Write-Host "==========================================" -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host "1 - Windows Домашняя"
+    Write-Host "2 - Windows Домашняя N"
+    Write-Host "3 - Windows Профессиональная"
+    Write-Host "4 - Windows Профессиональная N"
+    Write-Host "5 - Windows Образовательная"
+    Write-Host "6 - Windows Образовательная N"
+    Write-Host "7 - Windows Корпоративная"
+    Write-Host "8 - Windows Корпоративная N"
+    Write-Host ""
+
+    $choice = Read-Host "Введите номер редакции (1-8)"
+
+    $keys = @{
+        "1" = "TX9XD-98N7V-6WMQ6-BX7FG-H8Q99"
+        "2" = "3KHY7-WNT83-DGQKR-F7HPR-844BM"
+        "3" = "W269N-WFGWX-YVC9B-4J6C9-T83GX"
+        "4" = "MH37W-N47XK-V7XM9-C7227-GCQG9"
+        "5" = "NW6C2-QMPVW-D7KKK-3GKT6-VCFB2"
+        "6" = "DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4"
+        "7" = "NPPR9-FWDCX-D2C8J-H872K-2YT43"
+        "8" = "DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4"
+    }
+
+    if ($keys.ContainsKey($choice)) {
+        Activate-Windows $keys[$choice]
+    } else {
+        Write-Host "Неверный выбор." -ForegroundColor Red
+        Read-Host "Нажмите Enter для выхода..."
+    }
+}
+
+Show-MainMenu
