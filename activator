@@ -47,7 +47,7 @@ function Activate-Windows ($key) {
 function Activate-Office {
     Clear-Host
     Write-Host "Запуск скрипта активации Office..." -ForegroundColor Green
-    Write-Host "В появившемся меню нажмите 2." -ForegroundColor Yellow
+    Write-Host "В появившемся меню нажмите 2, а затем 1." -ForegroundColor Yellow
     Start-Sleep -Seconds 2
     
     irm https://get.activated.win | iex
