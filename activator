@@ -1,5 +1,8 @@
-$Host.UI.RawUI.WindowTitle = "Активация Windows / MS Office"
+$OutputEncoding = [System.Text.Encoding]::UTF8
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$PSDefaultParameterValues['*:Encoding'] = 'utf8'
+
+$Host.UI.RawUI.WindowTitle = "Активация Windows / MS Office"
 
 function Show-MainMenu {
     Clear-Host
