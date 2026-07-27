@@ -14,32 +14,74 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0d1117;
             color: #c9d1d9;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
         .card {
             background-color: #161b22;
             border: 1px solid #30363d;
             border-radius: 10px;
-            padding: 40px 30px;
-            width: 420px;
+            padding: 30px;
+            width: 440px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
         h1 {
-            font-size: 24px;
+            font-size: 22px;
             color: #f0f6fc;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-weight: 700;
         }
         p {
             font-size: 14px;
             color: #8b949e;
             line-height: 1.5;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
+        
+        /* Стили для скриншотов */
+        .screenshots-section {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .screenshots-title {
+            font-size: 13px;
+            color: #8b949e;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .screenshots-grid {
+            display: flex;
+            gap: 10px;
+        }
+        .screenshot-item {
+            flex: 1;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: #0d1117;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .screenshot-item:hover {
+            border-color: #58a6ff;
+        }
+        .screenshot-item img {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+            display: block;
+        }
+        .screenshot-label {
+            font-size: 11px;
+            text-align: center;
+            color: #8b949e;
+            padding: 4px 0;
+        }
+
         .btn {
             background-color: #1f6beb;
             color: #ffffff;
@@ -59,6 +101,26 @@
             box-shadow: 0 4px 12px rgba(31, 107, 235, 0.4);
             transform: translateY(-2px);
         }
+
+        /* Модальное окно для увеличенного просмотра */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
     </style>
 </head>
 <body>
@@ -66,8 +128,43 @@
     <div class="card">
         <h1>Steam Account Switcher</h1>
         <p>С помощью этой утилиты вы можете удобно переключаться между аккаунтами Steam (особенно если их у вас много).</p>
+
+        <!-- Секция со скриншотами -->
+        <div class="screenshots-section">
+            <div class="screenshots-title">Интерфейс утилиты:</div>
+            <div class="screenshots-grid">
+                <!-- Замени ссылки-заглушки на ссылки к своим картинкам -->
+                <div class="screenshot-item" onclick="openModal('https://github.com/carplk/carplk.github.io/blob/main/steamaccswitch/images/screenshot1.png')">
+                    <img src="https://github.com/carplk/carplk.github.io/blob/main/steamaccswitch/images/screenshot1.png" alt="Скриншот 1">
+                    <div class="screenshot-label">Главное окно</div>
+                </div>
+                <div class="screenshot-item" onclick="openModal('https://github.com/carplk/carplk.github.io/blob/main/steamaccswitch/images/screenshot2.png')">
+                    <img src="https://github.com/carplk/carplk.github.io/blob/main/steamaccswitch/images/screenshot2.png" alt="Скриншот 2">
+                    <div class="screenshot-label">Список аккаунтов</div>
+                </div>
+            </div>
+        </div>
+
         <a href="https://github.com/carplk/carplk.github.io/raw/refs/heads/main/steamaccswitch/simpleaccswitch.exe" class="btn">Скачать</a>
     </div>
+
+    <!-- Модальное окно для картинок -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <img id="modalImg" src="" alt="Увеличенный скриншот">
+    </div>
+
+    <script>
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            modalImg.src = src;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
