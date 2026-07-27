@@ -81,17 +81,7 @@
         .instructions p {
             margin: 0 0 8px 0;
             color: #8b949e;
-        }
-        .code-box {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 4px;
-            padding: 8px 10px;
-            font-family: monospace;
-            font-size: 11px;
-            color: #58a6ff;
-            word-break: break-all;
-            user-select: all;
+            line-height: 1.4;
         }
         .footer {
             margin-top: 20px;
@@ -108,19 +98,19 @@
 
         <div class="buttons-container">
             <div class="btn-wrapper">
-                <span>GUI Версия</span>
+                <span>Активатор с интерфейсом</span>
                 <button class="btn" onclick="copyCommand('gui')">Копировать</button>
             </div>
             <div class="btn-wrapper">
-                <span>TUI Версия</span>
+                <span>Лёгкий активатор в командной строке</span>
                 <button class="btn tui" onclick="copyCommand('tui')">Копировать</button>
             </div>
         </div>
 
         <div class="instructions">
-            <p>1. Нажмите клавиши <b>Win + X</b> и выберите <b>Терминал (Администратор)</b> или <b>PowerShell (Администратор)</b>.</p>
-            <p>2. Вставьте скопированную команду и нажмите <b>Enter</b>:</p>
-            <div class="code-box" id="codeText">irm https://raw.githubusercontent.com/carplk/carplk.github.io/refs/heads/main/activation/guiactivator | iex</div>
+            <p>1. Откройте меню <b>Пуск</b>, напишите <b>powershell</b>.</p>
+            <p>2. Нажмите ПКМ по <b>PowerShell</b> и выберите <b>Запустить от имени администратора</b>.</p>
+            <p>3. Нажмите ПКМ в окне PowerShell для вставки скопированной команды и нажмите <b>Enter</b>.</p>
         </div>
 
         <div class="footer">Требуются права Администратора</div>
@@ -136,7 +126,6 @@
             }
             
             navigator.clipboard.writeText(cmd).then(() => {
-                document.getElementById('codeText').innerText = cmd;
                 alert("Команда скопирована в буфер обмена!");
             });
         }
