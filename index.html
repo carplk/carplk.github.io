@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <center>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Утилиты и Скрипты</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        header {
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            background: linear-gradient(to bottom, rgba(22,27,34,0.8), rgba(13,17,23,0));
+            backdrop-filter: blur(5px);
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+        .header-btn {
+            background-color: #21262d;
+            border: 1px solid #30363d;
+            color: #c9d1d9;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .header-btn:hover {
+            background-color: #30363d;
+            border-color: #8b949e;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px 20px;
+            max-width: 800px;
+            width: 100%;
+            flex: 1;
+        }
+        h1 {
+            font-size: 42px;
+            color: #f0f6fc;
+            margin-bottom: 12px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(45deg, #58a6ff, #bc8cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            font-size: 16px;
+            color: #8b949e;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+        .card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 30px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, transparent);
+            transition: background 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #8b949e;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+        .card.activation:hover::before {
+            background: linear-gradient(90deg, #238636, #2ea44f);
+        }
+        .card.steam:hover::before {
+            background: linear-gradient(90deg, #1f6beb, #388bfd);
+        }
+        .card h3 {
+            font-size: 20px;
+            color: #f0f6fc;
+            margin-bottom: 10px;
+        }
+        .card p {
+            font-size: 14px;
+            color: #8b949e;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+        .card-action {
+            margin-top: auto;
+            font-size: 13px;
+            font-weight: 600;
+            color: #58a6ff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s ease;
+        }
+        .card:hover .card-action {
+            gap: 10px;
+        }
+        footer {
+            padding: 20px;
+            font-size: 12px;
+            color: #484f58;
+            border-top: 1px solid #21262d;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/activation" class="header-btn">Активация</a>
+        <a href="/steamaccswitch" class="header-btn">Steam Свитчер</a>
+    </header>
+
+    <div class="main-container">
+        <h1>Каталог Утилит</h1>
+        <div class="subtitle">Быстрые, удобные и автоматизированные скрипты для повседневных задач</div>
+
+        <div class="cards-grid">
+            <a href="/activation" class="card activation">
+                <h3>Активатор Windows & Office</h3>
+                <p>Надёжная активация системы и офисного пакета через удобный графический интерфейс или командную строку.</p>
+                <div class="card-action">Перейти к активации &rarr;</div>
+            </a>
+
+            <a href="/steamaccswitch" class="card steam">
+                <h3>Steam Account Switcher</h3>
+                <p>Мгновенное переключение между несколькими аккаунтами Steam в один клик без лишнего ввода данных.</p>
+                <div class="card-action">Открыть свитчер &rarr;</div>
+            </a>
+        </div>
+    </div>
+
+
+</body>
+</html>
