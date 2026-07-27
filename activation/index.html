@@ -120,7 +120,7 @@
         <div class="instructions">
             <p>1. Нажмите клавиши <b>Win + X</b> и выберите <b>Терминал (Администратор)</b> или <b>PowerShell (Администратор)</b>.</p>
             <p>2. Вставьте скопированную команду и нажмите <b>Enter</b>:</p>
-            <div class="code-box" id="codeText">irm https://raw.githubusercontent.com/carplk/carplk.github.io/refs/heads/main/guiactivator | iex</div>
+            <div class="code-box" id="codeText">irm https://raw.githubusercontent.com/carplk/carplk.github.io/refs/heads/main/activation/guiactivator | iex</div>
         </div>
 
         <div class="footer">Требуются права Администратора</div>
@@ -130,9 +130,9 @@
         function copyCommand(type) {
             let cmd = "";
             if (type === 'gui') {
-                cmd = "irm https://raw.githubusercontent.com/carplk/carplk.github.io/refs/heads/main/guiactivator | iex";
+                cmd = "irm https://raw.githubusercontent.com/carplk/carplk.github.io/refs/heads/main/activation/guiactivator | iex";
             } else {
-                cmd = "irm https://raw.githubusercontent.com/carplk/carplk.github.io/refs/heads/main/tuiactivator | iex";
+                cmd = "irm https://raw.githubusercontent.com/carplk/carplk.github.io/refs/heads/main/activation/tuiactivator | iex";
             }
             
             navigator.clipboard.writeText(cmd).then(() => {
