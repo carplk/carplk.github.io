@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <center>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная - Утилиты и Скрипты</title>
@@ -147,19 +146,29 @@
         }
         footer {
             padding: 20px;
-            font-size: 12px;
-            color: #484f58;
+            font-size: 13px;
+            color: #8b949e;
             border-top: 1px solid #21262d;
             width: 100%;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+        }
+        footer a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="/activation" class="header-btn">Активация</a>
-        <a href="/steamaccswitch" class="header-btn">Steam Свитчер</a>
+        <a href="https://github.com/carplk" target="_blank" class="header-btn">GitHub</a>
     </header>
 
     <div class="main-container">
@@ -181,6 +190,9 @@
         </div>
     </div>
 
+    <footer>
+        <div>На <a href="https://github.com/carplk/carplk.github.io" target="_blank">github.com/carplk/carplk.github.io</a> вы можете найти исходный код всех программ и скриптов.</div>
+    </footer>
 
 </body>
 </html>
