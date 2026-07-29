@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина в трее</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 30px;
+            width: 440px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            font-size: 22px;
+            color: #f0f6fc;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        p {
+            font-size: 14px;
+            color: #8b949e;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .screenshots-section {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .screenshots-title {
+            font-size: 13px;
+            color: #8b949e;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .screenshots-grid {
+            display: flex;
+            gap: 10px;
+        }
+        .screenshot-item {
+            flex: 1;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: #0d1117;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .screenshot-item:hover {
+            border-color: #58a6ff;
+        }
+        .screenshot-item img {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .download-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .download-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: left;
+        }
+        .download-group span {
+            font-size: 12px;
+            color: #8b949e;
+            font-weight: 600;
+        }
+        .btn {
+            background-color: #1f6beb;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+            width: 100%;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #388bfd;
+            box-shadow: 0 4px 12px rgba(31, 107, 235, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn.setup {
+            background-color: #238636;
+        }
+        .btn.setup:hover {
+            background-color: #2ea44f;
+            box-shadow: 0 4px 12px rgba(35, 134, 54, 0.4);
+        }
+    
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Корзина в трее</h1>
+        <p>Утилита для управления корзиной Windows прямо из системного трея с быстрым доступом и очисткой.</p>
+        
+        <div class="screenshots-section">
+            <div class="screenshots-title">Интерфейс утилиты: (нажмите на фото чтобы посмотреть)</div>
+            <div class="screenshots-grid">
+                <div class="screenshot-item" onclick="openModal('PLACEHOLDER_SCREENSHOT_1')">
+                    <img src="PLACEHOLDER_SCREENSHOT_1" alt="Скриншот 1">
+                </div>
+                <div class="screenshot-item" onclick="openModal('PLACEHOLDER_SCREENSHOT_2')">
+                    <img src="PLACEHOLDER_SCREENSHOT_2" alt="Скриншот 2">
+                </div>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <div class="download-group">
+                <span>Portable версия (без установки):</span>
+                <a href="PLACEHOLDER_PORTABLE_URL" class="btn">Скачать Portable</a>
+            </div>
+            <div class="download-group">
+                <span>Установщик (с установкой в систему):</span>
+                <a href="PLACEHOLDER_SETUP_URL" class="btn setup">Скачать установщик</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <img id="modalImg" src="" alt="Увеличенный скриншот">
+    </div>
+
+    <script>
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            modalImg.src = src;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
